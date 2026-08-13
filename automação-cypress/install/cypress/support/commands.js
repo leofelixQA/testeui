@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+ Cypress.Commands.add('preencherRegistro', (nome,email,telefone,senha,confirmarSenha) => {
+       cy.get('#name').type(nome)
+        cy.get('#email').type(email)
+        cy.get('#phone').type(telefone)
+        cy.get('#password').type("senha123")
+        cy.get('#confirm-password').type("senha123")
+        cy.get('#terms-agreement').check()
+        cy.get('#register-btn').click()
+        cy.get('#user-name').should("contain",nome)
+        cy.url().should("contain","dashboard")
+
+
+ })
