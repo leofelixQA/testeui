@@ -31,7 +31,7 @@ describe('Funcionalidade : registro', () => {
 
         cy.preencherRegistro(nome,email,telefone,"senha123","senha123")
     });
-    it.only('deve preencher registro usando page objects', () => {
+    it('deve preencher registro usando page objects', () => {
         let nome = faker.person.fullName()
         let email = faker.internet.email()
         let telefone = faker.phone.number()
