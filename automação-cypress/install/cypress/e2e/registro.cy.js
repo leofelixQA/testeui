@@ -1,9 +1,12 @@
+/// <reference types="cypress"/>
+
 import { faker } from '@faker-js/faker';
 import registro from "../support/commands"
+import cadastroPage from "../support/pages/cadastro-page"
 
 describe('Funcionalidade : registro', () => {
     beforeEach(() => {
-        cy.visit("register.html")
+        cadastroPage.visitarPaginaCadastro()
     });
 
     it('Deve preencher o formulario de registro', () => {
@@ -27,6 +30,15 @@ describe('Funcionalidade : registro', () => {
         let telefone = faker.phone.number()
 
         cy.preencherRegistro(nome,email,telefone,"senha123","senha123")
+    });
+    it.only('deve preencher registro usando page objects', () => {
+        let nome = faker.person.fullName()
+        let email = faker.internet.email()
+        let telefone = faker.phone.number()
+    
+        cadastroPage.preencherCadastro(nome,email,telefone,"senha123","senha123")
+         cy.url().should("contain","dashboard")
+         cy.get('#user-name').should("contain",nome)
     });
 
 

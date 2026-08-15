@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 
 describe('funcionalidade : contato', () => {
 beforeEach(() => {
-  cy.visit('http://localhost:3000/index.html')
+  cy.visit('index.html')
 });
 
   it.only('Deve preencher o formulario de contato com sucesso', () => {
